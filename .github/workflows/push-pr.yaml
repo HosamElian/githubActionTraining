@@ -1,0 +1,23 @@
+name: Running when push or pr 
+
+on: 
+  push:
+    branches:
+      - main 
+      - "release/**" # any branch start with release word
+    paths:
+      - "src/**" # when file changes in this directory
+  pull_request:
+    branches:
+      - main 
+      - "release/**" # any branch start with release word
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code 
+        uses: actions/checkout@v5.0.0
+
+      - name: Run Tests
+        run: npm test
+
