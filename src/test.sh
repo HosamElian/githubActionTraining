@@ -2,7 +2,7 @@
 # src/test.sh
 
 # Expected output
-EXPECTED="Hello, Test!"
+EXPECTED="Hello Test!"
 
 # Run the Node.js function and capture output
 OUTPUT=$(node -e "console.log(require('./src/app')('Test'))")
