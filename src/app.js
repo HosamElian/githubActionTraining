@@ -3,8 +3,8 @@ function greet(name){
 }
 
     module.exports = greet;
-    //test
-    if(require.main == module){
-        console.log(greet("World"));
+
+    // if(require.main == module){
+    //     console.log(greet("World"));
         
-    } 
+    // } 
