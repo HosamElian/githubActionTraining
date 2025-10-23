@@ -1,0 +1,16 @@
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js app that says Hello",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "test": "./src/test.sh"
+  },
+  "author": "Hossam",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
