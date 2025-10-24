@@ -1,4 +1,4 @@
-name: jobs in details
+name: jobs and steps in details
 
 on:
   workflow_dispatch
@@ -8,7 +8,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: show Job_1 Message
-        run: echo "echo Job ${{ github.job }}"
+        run: |
+          npm install
+          npm run build
+        working-directory: ./temp  # here the command will excute
+        shell: bash # cmd, powershell, python
+
+        # run: print %Env
+        # shell: perl {0}  # use perl to run the above command
   
   job_2:
     runs-on: ubuntu-latest
