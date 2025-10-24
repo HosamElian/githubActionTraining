@@ -1,0 +1,57 @@
+name: learn actions
+
+on:
+  workflow_dispatch
+jobs:
+  hybrid_jobs:
+    runs-on: ubuntu-latest
+    steps: 
+      - name: Run a command on Ubuntu VM
+        run: echo "This runs on The Ubuntu VM"
+      - name: Run inside an alpine container
+        uses: docker://alpine:3.14 # the container must be accessible without authentication   
+        with: 
+          entrypoint: /bin/sh
+          args: |
+            - -c
+            - 
+              echo "This runs inside Alpine container"
+              
+      - name: Run another command in Ubuntu VM
+        run: echo "This runs on The Ubuntu VM"
+  
+  job1_matrix_strategy:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      max-parallel: 3
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node_version: [14.x, 15.x,16.x]
+    steps:
+      - uses: actions/setup-node@v3.6.0
+        with:
+          node-version: ${{ matrix.node_version }}
+          
+
+#  dockerized_job:
+#    runs-on: ubuntu-latest
+#    container: 
+#      image: write your registery here
+#      credentials:
+#        username: ${{ secrets.DOCKER_USERNAME }}
+#        password: ${{ secrets.DOCKER_PASSWORD }}
+#    steps:
+#      - run: node --version
+#      - run: echo "This runs inside private container"
+
+    #### to run local actions
+#  actions-job:
+#    runs-on: ubuntu-latest
+#      steps: 
+#        - name: Say Hello
+#          uses: .github/actions/Greeting@v1
+#          with: 
+        #  name: Hossam
+        #env:
+         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
