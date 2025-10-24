@@ -2,7 +2,16 @@ name: Manual Script
 
 on: 
   workflow_dispatch:
-
+    inputs:
+      environment:
+        description: "Choose Environment"
+        required: true
+        default: "staging"
+        type: choise
+        options:
+          - staging
+          - production
+        
 jobs:
   deploy:
     runs-on: ubuntu-latest
