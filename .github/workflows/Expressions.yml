@@ -1,0 +1,30 @@
+name: expressions
+
+on:
+  workflow_dispatch
+
+jobs:
+  expressions:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print a message
+      run: echo "This Job is running"
+      if: ${{ github.event_name == 'push' 
+             || github.ref == 'refs/head/main/' 
+             ||! contains(github.event.head_commit.message, 'WIP') 
+             || stratWith(github.ref, 'refs/tags/v') }} 
+
+  expression_2:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Run a deployment Script
+      run: ./depoly.sh
+
+    - name: cleanup on failure
+      run: echo 'deployment succeded'
+      if: success()
+      # always() run regardless previous result
+      # cancelled() run if the previous step was cancelled 
+      # failure() run if the previous step was failed
+  
+      
