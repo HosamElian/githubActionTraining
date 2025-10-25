@@ -12,7 +12,14 @@ jobs:
 
     - name: Use API Key
       run: echo "Using API Key  $API_KEY"
-    
+
+    - name: Check if file exists
+      run: |
+        if [-f "config.yaml"]; then
+          echo "::debug::config.yaml exists"
+          else
+          echo "::error::config.yaml is missing"
+        fi
 #    - name: print a message
 #      run: |
 #         deprecated=true
