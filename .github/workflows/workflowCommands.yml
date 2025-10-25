@@ -11,7 +11,9 @@ jobs:
       run: echo "API_KEY=12345" >> $GITHUB_ENV # add API_KEY to GITHUB_ENV 
 
     - name: Use API Key
-      run: echo "Using API Key  $API_KEY"
+      run: |
+        echo "::add-mask::$API_KEY"
+        echo "Using API Key $API_KEY"
 
     - name: Check if file exists
       run: |
