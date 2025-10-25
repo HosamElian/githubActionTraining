@@ -1,4 +1,4 @@
-name: workfload commands
+name: workflow commands
 
 on:
   workflow_dispatch
