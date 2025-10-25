@@ -1,0 +1,16 @@
+name: workfload commands
+
+on:
+  workflow_dispatch
+
+jobs:
+  commands:
+    runs-on: ubuntu-latest
+    steps:
+    - name: print a message
+      run: |
+         deprecated=true
+         if [[ deprecated ]]; then
+           echo "::warning::Deprecated function found"
+         fi
+# workfload command => ::warning::
